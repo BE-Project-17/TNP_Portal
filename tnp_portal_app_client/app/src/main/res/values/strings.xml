@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">TNP Portal</string>
+    <string name="placeholder">Placholder</string>
+    <string name="system_name">PICT TNP Portal</string>
+    <string name="system_logo">PICT Logo</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_applied_companies">Applied Companies</string>
+    <string name="menu_analysis">Analysis</string>
+    <string name="menu_profile">Profile</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="enter_email_id">Email</string>
+    <string name="enter_password">Password</string>
+    <string name="login">Login</string>
+    <string name="search_company">Search Company</string>
+    <string name="login_bg">Login Background Image containing company names visiting the campus</string>
+    <string name="education_details">Education Details</string>
+    <string name="amcat_details">AmCAT Details</string>
+    <string name="experience_details">Experience Details</string>
+    <string name="college_details">College Details</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="currently_visiting_companies">Currently Visiting Companies</string>
+    <string name="show_more">Show More</string>
+    <string name="applied_companies">Applied Companies</string>
+    <string name="company_logo">Company Logo</string>
+</resources>

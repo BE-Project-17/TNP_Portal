@@ -18,6 +18,7 @@ import { AddCompanyComponent } from './component/add-company/add-company.compone
 import { CompaniesComponent } from './component/companies/companies.component';
 import { companyReducer } from './store/reducers/company.reducer';
 import { CompanyInfoComponent } from './component/company-info/company-info.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CompanyInfoComponent } from './component/company-info/company-info.comp
       "placedStudent": placedStudentReducer,
       "company": companyReducer
     }),
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

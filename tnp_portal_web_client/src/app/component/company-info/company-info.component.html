@@ -76,52 +76,69 @@
                             <div class="form-group col-md-6">
                                 <h6>UG Branch* </h6>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="ce">
+                                    <input class="form-check-input" type="checkbox" id="ce" [(ngModel)]="ugbranch.cse" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="ce">COMPUTER_ENGINEERING</label>
                                     <br>
-                                    <input class="form-check-input" type="checkbox" id="it">
+                                    <input class="form-check-input" type="checkbox" id="it" [(ngModel)]="ugbranch.it" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="it">INFORMATION_TECHNOLOGY</label>
                                     <br>
-                                    <input class="form-check-input" type="checkbox" id="entc">
+                                    <input class="form-check-input" type="checkbox" id="entc" [(ngModel)]="ugbranch.entc" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="entc">EnTC</label>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
                                 <h6>PG Branch* </h6>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="ce">
+                                    <input class="form-check-input" type="checkbox" id="ce" [(ngModel)]="pgbranch.cse" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="ce">COMPUTER_ENGINEERING</label>
                                     <br>
-                                    <input class="form-check-input" type="checkbox" id="it">
+                                    <input class="form-check-input" type="checkbox" id="it" [(ngModel)]="pgbranch.it" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="it">INFORMATION_TECHNOLOGY</label>
                                     <br>
-                                    <input class="form-check-input" type="checkbox" id="entc">
+                                    <input class="form-check-input" type="checkbox" id="entc" [(ngModel)]="pgbranch.entc" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="entc">EnTC</label>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
                                 <h6>Gender* </h6>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="male">
+                                    <input class="form-check-input" type="checkbox" id="male" [(ngModel)]="gender.male" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="male">Male</label>
                                     <br>
-                                    <input class="form-check-input" type="checkbox" id="female">
+                                    <input class="form-check-input" type="checkbox" id="female" [(ngModel)]="gender.female" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="female">Female</label>
                                     <br>
-                                    <input class="form-check-input" type="checkbox" id="both">
+                                    <input class="form-check-input" type="checkbox" id="both" [(ngModel)]="gender.both" [ngModelOptions]="{standalone:true}">
                                     <label class="form-check-label" for="both">Both</label>
                                 </div>
                             </div>
-
-                            <!-- TODO: Add Skills -->
-
                         </div>
+                        <hr>
+                        
+                        <h5>Skills required: </h5>
+                        <hr>
+                        <!-- TODO: Add Skills -->
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="eg. Java" [(ngModel)]="value" [ngModelOptions]="{standalone:true}">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="submit" (click)="addKeyword()">Add Skill</button>
+                            </div>
+                        </div>
+                        <div *ngFor="let keyword of job.skills; let indexOfElement=index" style="display: inline-block;">
+                            <div class="card">
+                                <div class="card-body">
+                                    {{keyword}} <button (click)="removeKeyword(indexOfElement)" style="background-color: white; border: none;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+                                </div>
+                              </div>
+                        </div>
+
                         <hr>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="addJob()">Add
+                    <button type="button" class="btn btn-dark" (click)="addJob()">Add
                         Job</button>
                 </div>
             </div>

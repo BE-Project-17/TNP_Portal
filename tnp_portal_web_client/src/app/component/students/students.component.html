@@ -1,5 +1,7 @@
 <div class="container-fluid">
-    <table class="table" *ngIf="!isStudentsEmpty()">
+  <div id="content" #content>
+  <br>  
+  <table class="table" *ngIf="!isStudentsEmpty()">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Sr No.</th>
@@ -7,20 +9,55 @@
             <th scope="col">Email</th>
             <th scope="col">Roll No</th>
             <th scope="col">Branch</th>
+            
+            <th scope="col">CGPA</th>
+            <th scope="col">SSC %</th>
+            <th scope="col">HSC %</th>
+            <th scope="col">Quantitative Score %</th>
+            <th scope="col">Logical Reasoning Score %</th>
+            <th scope="col">English Prof Score %</th>
+            <th scope="col">Automata Pro Score %</th>
+            <th scope="col">Computer Science Score %</th>
+            <th scope="col">Internships</th>
+            <th scope="col">Projects</th>
+            <th scope="col">Backlogs</th>
+
             <th scope="col">Placement Status</th>
-            <th scope="col">View Info</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let student of students; let indexOfElement=index">
             <th scope="row">{{indexOfElement+1}}</th>
-            <td scope="row">{{student.name}}</td>
+            <td scope="row"><a class="info-btn" (click)="onViewInfoClick(student)">{{student.name}}</a></td>
             <td scope="row">{{student.email}}</td>
             <td scope="row">{{student.rollNo}}</td>
             <td scope="row">{{student.branch}}</td>
+
+            <td scope="row">{{student.cgpa}}</td>
+            <td scope="row">{{student.ssc}}</td>
+            <td scope="row">{{student.hsc}}</td>
+            <td scope="row">{{student.quantitative_score}}</td>
+            <td scope="row">{{student.logical_reasoning_score}}</td>
+            <td scope="row">{{student.english_prof_score}}</td>
+            <td scope="row">{{student.automata_pro_score}}</td>
+            <td scope="row">{{student.computer_science_score}}</td>
+            <td scope="row">{{student.internships}}</td>
+            <td scope="row">{{student.backlogs}}</td>
+            <td scope="row">{{student.projects}}</td>
+            
             <td scope="row">{{student.placed ? 'Placed' : 'Not Placed'}}</td>
-            <td scope="row"><button class="info-btn" (click)="onViewInfoClick(student)"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
           </tr>
         </tbody>
       </table>
+      
+  </div>
+
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-dark" (click)="savePdf()">Download PDF</button>
+        </div>
+        <div class="col" style="text-align: end;">
+          <button class="btn btn-dark" (click)="saveExcel()">Download Excel</button>
+        </div>
+      </div>
 </div>

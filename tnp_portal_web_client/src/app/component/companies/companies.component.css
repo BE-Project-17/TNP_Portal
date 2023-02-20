@@ -1,0 +1,10 @@
+.company-container{
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin: 10px;
+}

@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="text-center" *ngIf="isLoading">
+    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <form>
+    <hr>
+    <h5>Credentials: </h5>
+    <hr>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="student.email"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="student.password"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+    </div>
+    <hr>
+
+
+    <h5>Personal details:</h5>
+    <hr>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name" [(ngModel)]="student.name"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="rollNo">Roll No</label>
+        <input type="number" class="form-control" id="rollNo" placeholder="Roll No" [(ngModel)]="student.rollNo"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+    </div>
+    <hr>
+
+    <h5>Marks: </h5>
+    <hr>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="ssc">SSC Marks %</label>
+        <input type="number" min="0" max="100" class="form-control" id="ssc" placeholder="eg. 90.0"
+          [(ngModel)]="student.ssc" [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="hsc">HSC Marks %</label>
+        <input type="number" class="form-control" id="hsc" placeholder="eg. 90.0" [(ngModel)]="student.hsc"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="cgpa">CGPA</label>
+        <input type="number" class="form-control" id="cgpa" placeholder="eg. 8.5" [(ngModel)]="student.cgpa"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="branch">Branch</label>
+        <select class="form-select" aria-label="Default select example" id="branch" [(ngModel)]="student.branch"
+          [ngModelOptions]="{standalone:true}">
+          <option value="COMPUTER_ENGINEERING">COMPUTER_ENGINEERING</option>
+          <option value="INFORMATION_TECHNOLOGY">INFORMATION_TECHNOLOGY</option>
+          <option value="EnTC">EnTC</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+
+    <h5>AmCAT Details: </h5>
+    <hr>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="qs">Quantitative Score</label>
+        <input type="number" class="form-control" id="qs" placeholder="eg. 90.0"
+          [(ngModel)]="student.quantitative_score" [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lrs">Logical Reasoning Score</label>
+        <input type="number" class="form-control" id="lrs" placeholder="eg. 90.0"
+          [(ngModel)]="student.logical_reasoning_score" [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="eps">English Proficiency Score</label>
+        <input type="number" class="form-control" id="eps" placeholder="eg. 90.0"
+          [(ngModel)]="student.english_prof_score" [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="aps">Automata Pro Score</label>
+        <input type="number" class="form-control" id="aps" placeholder="eg. 90.0"
+          [(ngModel)]="student.automata_pro_score" [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="css">Computer Science Score</label>
+        <input type="number" class="form-control" id="css" placeholder="eg. 90.0"
+          [(ngModel)]="student.computer_science_score" [ngModelOptions]="{standalone:true}">
+      </div>
+    </div>
+    <hr>
+
+    <h5>Other Details: </h5>
+    <hr>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="backlogs">Backlogs</label>
+        <input type="number" class="form-control" id="backlogs" placeholder="eg. 0" [(ngModel)]="student.backlogs"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="internships">Internships</label>
+        <input type="number" class="form-control" id="internships" placeholder="eg. 3" [(ngModel)]="student.internships"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="projects">Project</label>
+        <input type="number" class="form-control" id="projects" placeholder="eg. 2" [(ngModel)]="student.projects"
+          [ngModelOptions]="{standalone:true}">
+      </div>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="student.placed"
+        [ngModelOptions]="{standalone:true}">
+      <label class="form-check-label" for="flexCheckDefault">
+        Placed?
+      </label>
+    </div>
+    <hr>
+
+    <button type="submit" (click)="addStudent()" class="btn btn-dark">Add Student</button>
+  </form>
+</div>

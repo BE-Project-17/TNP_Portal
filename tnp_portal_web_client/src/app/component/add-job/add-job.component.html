@@ -1,0 +1,133 @@
+<button class="btn btn-dark" class="btn btn-dark" data-toggle="modal" data-target="#basicModal">Add
+    Job</button>
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true" #basicModal>
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Job for Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <h5>Basic Info: {{job.registration_end_date_time}}</h5>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="role">Role*</label>
+                            <input type="text" class="form-control" id="role" placeholder="Role"
+                                [(ngModel)]="job.role" [ngModelOptions]="{standalone:true}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ctc">CTC Offered*</label>
+                            <input type="number" min="0" class="form-control" id="ctc" placeholder="CTC"
+                                [(ngModel)]="job.ctc" [ngModelOptions]="{standalone:true}">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="registration_end_date">Registration End Date*</label>
+                            <input type="datetime-local" class="form-control" id="registration_end_date" placeholder="CTC" 
+                                [(ngModel)]="job.registration_end_date_time" [ngModelOptions]="{standalone:true}">
+                        </div>
+
+                    </div>
+                    <hr>
+
+                    <h5>Criteria: </h5>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="ssc">SSC</label>
+                            <input type="number" class="form-control" id="ssc" placeholder="eg. 85.5"
+                                [(ngModel)]="job.ssc" [ngModelOptions]="{standalone:true}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="hsc">HSC</label>
+                            <input type="number" class="form-control" id="hsc" placeholder="eg. 85.5"
+                                [(ngModel)]="job.hsc" [ngModelOptions]="{standalone:true}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cgpa">CGPA</label>
+                            <input type="number" class="form-control" id="cgpa" placeholder="eg. 8.5"
+                                [(ngModel)]="job.cgpa" [ngModelOptions]="{standalone:true}">
+                        </div>
+                    </div>
+                    <hr>
+
+                    <h5>Eligibility Details: </h5>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <h6>UG Branch* </h6>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="ce" [(ngModel)]="ugbranch.cse" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="ce">COMPUTER_ENGINEERING</label>
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="it" [(ngModel)]="ugbranch.it" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="it">INFORMATION_TECHNOLOGY</label>
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="entc" [(ngModel)]="ugbranch.entc" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="entc">EnTC</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <h6>PG Branch* </h6>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="ce" [(ngModel)]="pgbranch.cse" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="ce">COMPUTER_ENGINEERING</label>
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="it" [(ngModel)]="pgbranch.it" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="it">INFORMATION_TECHNOLOGY</label>
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="entc" [(ngModel)]="pgbranch.entc" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="entc">EnTC</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <h6>Gender* </h6>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="male" [(ngModel)]="gender.male" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="male">Male</label>
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="female" [(ngModel)]="gender.female" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="female">Female</label>
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="both" [(ngModel)]="gender.both" [ngModelOptions]="{standalone:true}">
+                                <label class="form-check-label" for="both">Both</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    
+                    <h5>Skills required: </h5>
+                    <hr>
+                    <!-- TODO: Add Skills -->
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="eg. Java" [(ngModel)]="value" [ngModelOptions]="{standalone:true}">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary" type="submit" (click)="addKeyword()">Add Skill</button>
+                        </div>
+                    </div>
+                    <div *ngFor="let keyword of job.skills; let indexOfElement=index" style="display: inline-block; margin: 5px;">
+                        <div class="card">
+                            <div class="card-body">
+                                {{keyword}} <button (click)="removeKeyword(indexOfElement)" style="background-color: white; border: none;"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+                            </div>
+                          </div>
+                    </div>
+
+                    <hr>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-dark" (click)="addJob()">Add
+                    Job</button>
+            </div>
+        </div>
+    </div>
+</div>

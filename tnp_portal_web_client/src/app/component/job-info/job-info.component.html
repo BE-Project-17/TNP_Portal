@@ -1,0 +1,86 @@
+<th scope="row">{{index+1}}</th>
+<td scope="row">{{job.role}}</td>
+<td scope="row">{{job.ctc}}</td>
+<td scope="row">{{job.registration_end_date_time}}</td>
+<td scope="row"><button style="background-color: white; border: none;"><i class="fa fa-eye" aria-hidden="true" data-toggle="modal" data-target="#infoModal"></i></button></td>
+<td scope="row"><button style="background-color: white; border: none;"><i class="fa fa-trash" (click)="deleteJob()" ></i></button></td>
+
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true" #infoModal>
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Job Information:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col">
+                        <h5>Role: {{job.role}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5>CTC Offered: {{job.ctc}}</h5>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <h5>Registration End Date: {{job.registration_end_date_time}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5>Gender: {{job.gender}}</h5>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <h5>SSC: {{job.ssc == null ? 'N/A' : job.ssc}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5>HSC: {{job.hsc == null ? 'N/A' : job.hsc}}</h5>
+                    </div>
+                    <div class="col">
+                        <h5>CGPA: {{job.cgpa == null ? 'N/A' : job.cgpa}}</h5>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <h5>UG Branch:</h5>
+                    <br>
+                    <div class="col" *ngFor="let branch of job.ugBranch">
+                        <h5>{{branch}}</h5>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <h5>PG Branch:</h5>
+                    <br>
+                    <div class="col" *ngFor="let branch of job.pgBranch">
+                        <h5>{{branch}}</h5>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <h5>Skills: </h5>
+                <div class="row">
+                    <div class="col" *ngFor="let skill of job.skills" style="display: inline-block; margin: 5px;">
+                        <div class="card">
+                            <div class="card-body">
+                                {{skill}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

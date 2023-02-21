@@ -1,5 +1,5 @@
 export class BranchCheckbox{
-    cse: boolean = false
-    it: boolean = false
-    entc: boolean = false
+    cse: boolean = true
+    it: boolean = true
+    entc: boolean = true
 }

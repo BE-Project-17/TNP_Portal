@@ -19,6 +19,9 @@ import { CompaniesComponent } from './component/companies/companies.component';
 import { companyReducer } from './store/reducers/company.reducer';
 import { CompanyInfoComponent } from './component/company-info/company-info.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { jobReducer } from './store/reducers/job.reducer';
+import { JobInfoComponent } from './component/job-info/job-info.component';
+import { AddJobComponent } from './component/add-job/add-job.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     StudentInfoComponent,
     AddCompanyComponent,
     CompaniesComponent,
-    CompanyInfoComponent
+    CompanyInfoComponent,
+    JobInfoComponent,
+    AddJobComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
       "loader": loadingReducer,
       "student": studentReducer,
       "placedStudent": placedStudentReducer,
-      "company": companyReducer
+      "company": companyReducer,
+      "job": jobReducer
     }),
     NoopAnimationsModule,
   ],

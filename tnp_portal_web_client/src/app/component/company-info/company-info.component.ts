@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Company } from 'src/app/model/company.model';
 import { Job } from 'src/app/model/job.model';
+import { HttpServiceService } from 'src/app/service/http-service.service';
 import { BranchCheckbox } from 'src/app/shared/branch-checkbox';
 import { GenderCheckbox } from 'src/app/shared/gender-checkbox';
+import { JobAction } from 'src/app/store/actions/job.action';
+import { LoadingAction } from 'src/app/store/actions/loading.action';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-company-info',
@@ -12,44 +17,64 @@ import { GenderCheckbox } from 'src/app/shared/gender-checkbox';
 })
 export class CompanyInfoComponent {
 
-  job: Job;
   company: Company;
 
-  value: string;
+  isLoading: boolean;
 
-  ugbranch: BranchCheckbox;
-  pgbranch: BranchCheckbox;
-  gender: GenderCheckbox;
+  addJobEndPoint: string = "/company/add-job";
 
-  constructor(private route: ActivatedRoute){
-    this.value = "";
-    this.job = new Job();
-    this.job.skills = [];
-    this.ugbranch = new BranchCheckbox();
-    this.pgbranch = new BranchCheckbox();
-    this.gender = new GenderCheckbox();
+  jobList: Job[];
+
+  constructor(private route: ActivatedRoute, private service: HttpServiceService, private store: Store<any>){
+    this.jobList = [];
+    this.isLoading = false;
     this.company = JSON.parse(this.route.snapshot.paramMap.get('company') || "");
+    
+    this.store.select("loader")
+    .subscribe((data)=>{
+      this.isLoading = data;
+    });
+
+    this.store.select("job")
+    .subscribe((data)=>{
+      this.jobList = data;
+      console.log(this.jobList);
+      
+    });
+
+    this.fetchJobsList();
 
   }
 
-  addJob(): void{
-    if(this.job.role == "" || this.job.ctc == null || this.job.registration_end_date_time == "" ){
-      alert("Enter non-empty data");
-      return;
-    }
-    console.log("Call Add Job API");
+  addJob(job: Job): void{
+
+    this.store.dispatch(new LoadingAction(true));
+
+    this.service.putRequest(environment.apiBaseUrl+this.addJobEndPoint+"/"+this.company.id,job)
+    .subscribe((response)=>{
+      if(response.status == 200){
+        this.store.dispatch(new LoadingAction(false));
+        this.fetchJobsList();
+      }
+    });    
     
   }
-
-  removeKeyword(index: number): void{
-    this.job.skills.splice(index,1);
+  fetchJobsList(): void{
+    this.service.getRequest(environment.apiBaseUrl+"/job").subscribe((response)=>{
+      if(response.status == 200){
+        this.store.dispatch(new JobAction(response.body));
+      }
+    })
   }
 
-  addKeyword(): void{
-    if(this.value!= "" && !this.job.skills.includes(this.value)){
-      this.job.skills.push(this.value);
-    }
-    this.value = "";
+  onDeleteJobReq(id: string): void{
+    this.store.dispatch(new LoadingAction(true));
+    this.service.deleteRequest(environment.apiBaseUrl+"/job/"+id).subscribe((response)=>{
+      if(response.status == 200){
+        this.store.dispatch(new LoadingAction(false));
+        this.fetchJobsList();
+      }
+    })
   }
 
 }

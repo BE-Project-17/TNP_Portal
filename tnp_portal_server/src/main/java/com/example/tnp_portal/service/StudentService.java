@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class StudentServiceImpl implements IStudentService {
+public class StudentService implements IStudentService {
 
     @Autowired
     private IStudentRepository repository;
@@ -175,6 +175,29 @@ public class StudentServiceImpl implements IStudentService {
             }
             return new ResponseEntity<>(student,HttpStatus.OK);
 
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Override
+    public ResponseEntity<?> getAppliedStudents(String id) {
+        try{
+            List<Student> students = repository.findAll();
+            List<Student> appliedStudents = new ArrayList<>();
+            for (Student student : students) {
+                if(student.getAppliedJobs() == null){
+                    continue;
+                }
+                for(Job job: student.getAppliedJobs()){
+                    if(job.getId().equals(id)){
+                        appliedStudents.add(student);
+                        break;
+                    }
+                }
+            }
+            return new ResponseEntity<>(appliedStudents,HttpStatus.OK);
         }catch (Exception e){
             System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

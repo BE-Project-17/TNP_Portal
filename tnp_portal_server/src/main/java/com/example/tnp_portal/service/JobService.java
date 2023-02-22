@@ -2,8 +2,10 @@ package com.example.tnp_portal.service;
 
 import com.example.tnp_portal.entity.Company;
 import com.example.tnp_portal.entity.Job;
+import com.example.tnp_portal.entity.Student;
 import com.example.tnp_portal.repository.ICompanyRepository;
 import com.example.tnp_portal.repository.IJobRepository;
+import com.example.tnp_portal.repository.IStudentRepository;
 import com.example.tnp_portal.utils.Gender;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +18,13 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class JobServiceImpl implements IJobService{
+public class JobService implements IJobService{
 
     @Autowired
     private IJobRepository repository;
 
     @Autowired
     private ICompanyRepository companyRepository;
-
 
     @Override
     public ResponseEntity<?> getAllJobs() {

@@ -22,6 +22,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { jobReducer } from './store/reducers/job.reducer';
 import { JobInfoComponent } from './component/job-info/job-info.component';
 import { AddJobComponent } from './component/add-job/add-job.component';
+import { dashboardInfoReducer } from './store/reducers/dashboard-info.reducer';
+import { AdminComponent } from './component/admin/admin.component';
+import { loginReducer } from './store/reducers/login.reducer';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { AddJobComponent } from './component/add-job/add-job.component';
     CompaniesComponent,
     CompanyInfoComponent,
     JobInfoComponent,
-    AddJobComponent
+    AddJobComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,7 @@ import { AddJobComponent } from './component/add-job/add-job.component';
       {path: "add-company", component: AddCompanyComponent},
       {path: "companies", component: CompaniesComponent},
       {path: "company-info/:company", component: CompanyInfoComponent},
+      {path: "admin/:add_admin", component: AdminComponent},
       {path: "**", redirectTo: ""}
     ]),
     StoreModule.forRoot({
@@ -55,7 +60,9 @@ import { AddJobComponent } from './component/add-job/add-job.component';
       "student": studentReducer,
       "placedStudent": placedStudentReducer,
       "company": companyReducer,
-      "job": jobReducer
+      "job": jobReducer,
+      "dashboardInfo": dashboardInfoReducer,
+      "login": loginReducer
     }),
     NoopAnimationsModule,
   ],

@@ -20,4 +20,6 @@ public interface IStudentService {
     public ResponseEntity<?> getAllPlacedStudents();
 
     public ResponseEntity<?> login(Map<String,?> request);
+
+    public ResponseEntity<?> getAppliedStudents(String id);
 }

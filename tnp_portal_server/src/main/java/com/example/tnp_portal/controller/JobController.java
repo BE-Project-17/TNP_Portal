@@ -1,6 +1,6 @@
 package com.example.tnp_portal.controller;
 
-import com.example.tnp_portal.service.JobServiceImpl;
+import com.example.tnp_portal.service.JobService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +12,10 @@ import java.util.Map;
 @RequestMapping("api/v1/job")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class JobController {
-    private JobServiceImpl service;
+    private JobService service;
 
     @Autowired
-    public JobController(JobServiceImpl service) {
+    public JobController(JobService service) {
         this.service = service;
     }
 

@@ -1,7 +1,7 @@
 package com.example.tnp_portal.controller;
 
 import com.example.tnp_portal.entity.Student;
-import com.example.tnp_portal.service.StudentServiceImpl;
+import com.example.tnp_portal.service.StudentService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +14,10 @@ import java.util.Map;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StudentController {
 
-    private StudentServiceImpl service;
+    private StudentService service;
 
     @Autowired
-    public StudentController(StudentServiceImpl service) {
+    public StudentController(StudentService service) {
         this.service = service;
     }
 
@@ -54,5 +54,10 @@ public class StudentController {
     @PostMapping("/login")
     public ResponseEntity<?> loginStudent(@RequestBody Map<String,?> body){
         return this.service.login(body);
+    }
+
+    @GetMapping("/applied-students/{job_id}")
+    public ResponseEntity<?> getAppliedStudents(@PathVariable(name = "job_id") String job_id){
+        return this.service.getAppliedStudents(job_id);
     }
 }

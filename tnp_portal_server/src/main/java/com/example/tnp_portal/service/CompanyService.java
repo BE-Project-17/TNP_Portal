@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
-public class CompanyServiceImpl implements ICompanyService{
+public class CompanyService implements ICompanyService{
 
     @Autowired
     private ICompanyRepository repository;

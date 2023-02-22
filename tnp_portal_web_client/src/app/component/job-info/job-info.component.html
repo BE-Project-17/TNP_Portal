@@ -4,6 +4,7 @@
 <td scope="row">{{job.registration_end_date_time}}</td>
 <td scope="row"><button style="background-color: white; border: none;"><i class="fa fa-eye" aria-hidden="true" data-toggle="modal" data-target="#infoModal"></i></button></td>
 <td scope="row"><button style="background-color: white; border: none;"><i class="fa fa-trash" (click)="deleteJob()" ></i></button></td>
+<td scope="row"><button style="background-color: white; border: none;"><i class="fa fa-eye" (click)="viewAppliedStudents()" data-toggle="modal" data-target="#appliedJobModal"></i></button></td>
 
 
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
@@ -77,6 +78,63 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="appliedJobModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true" #appliedJobModal>
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Applied Students:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div id="appliedStudentContent" #appliedStudentContent>
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Sr No.</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Roll No</th>
+                            <th scope="col">Branch</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">CGPA</th>
+                            <th scope="col">SSC</th>
+                            <th scope="col">HSC</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let student of students; let indexOfElement=index">
+                            <td scope="col">{{indexOfElement+1}}</td>
+                            <td scope="col">{{student.name}}</td>
+                            <td scope="col">{{student.rollNo}}</td>
+                            <td scope="col">{{student.branch}}</td>
+                            <td scope="col">{{student.email}}</td>
+                            <td scope="col">{{student.cgpa}}</td>
+                            <td scope="col">{{student.ssc}}</td>
+                            <td scope="col">{{student.hsc}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                </div>
+                
+                  <div class="row">
+                    <div class="col">
+                        <button class="btn btn-dark" (click)="savePDF()">Download PDF</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-dark" (click)="saveExcel()" style="text-align: end;">Download Excel</button>
+                    </div>
+                  </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

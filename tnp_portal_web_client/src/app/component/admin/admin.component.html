@@ -1,0 +1,35 @@
+<div class="row" style="padding: 5px;">
+    <div class="col text-center">
+        <img src="../../../assets/admin_image.png" style="height: 600px; width: 600px;">
+    </div>
+    <div class="col">
+        <form>
+            <hr>
+            <h5>{{add_admin ? 'Admin Admin' : 'Add Login'}}: </h5>
+            <hr>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="username" [(ngModel)]="username"
+                    [ngModelOptions]="{standalone:true}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="password" [(ngModel)]="password"
+                    [ngModelOptions]="{standalone:true}">
+                </div>
+            </div>
+            <div class="form-row" *ngIf="add_admin">
+                <div class="form-group col-md-6">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="confirmPassword" [(ngModel)]="confirmPassword"
+                    [ngModelOptions]="{standalone:true}">
+                </div>
+            </div>
+              <button type="submit" (click)="onClickBtn()" class="btn btn-dark">{{add_admin ? 'Add Admin' : 'Login'}}</button>
+        </form>
+        <hr>
+    </div>
+</div>

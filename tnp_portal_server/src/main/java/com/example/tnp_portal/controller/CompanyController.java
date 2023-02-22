@@ -2,7 +2,7 @@ package com.example.tnp_portal.controller;
 
 import com.example.tnp_portal.entity.Company;
 import com.example.tnp_portal.entity.Job;
-import com.example.tnp_portal.service.CompanyServiceImpl;
+import com.example.tnp_portal.service.CompanyService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +15,10 @@ import java.util.Map;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CompanyController {
 
-    private CompanyServiceImpl service;
+    private CompanyService service;
 
     @Autowired
-    public CompanyController(CompanyServiceImpl service) {
+    public CompanyController(CompanyService service) {
         this.service = service;
     }
 

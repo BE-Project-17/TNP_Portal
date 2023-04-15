@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "1da56d88-1388-446b-b2b0-5a6b78d352fe",
+		"name": "TNP_Portal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24568236"
+	},
+	"item": [
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Add Student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Prasad Khalkar\",\r\n    \"email\": \"prasadkhalkar@gmail.com\",\r\n    \"branch\": \"INFORMATION_TECHNOLOGY\",\r\n    \"password\": \"Nashik@123\",\r\n    \"rollNo\": \"43138\",\r\n    \"cgpa\": \"9.5\",\r\n    \"hsc\": \"95\",\r\n    \"ssc\": \"90\",\r\n    \"quantitative_score\": \"88.9\",\r\n    \"logical_reasoning_score\": \"98.9\" ,\r\n    \"english_prof_score\": \"97.9\",\r\n    \"automata_pro_score\": \"99.9\",\r\n    \"computer_science_score\": \"99.9\",\r\n    \"internships\": \"2\",\r\n    \"backlogs\": \"0\",\r\n    \"projects\": \"5\",\r\n    \"placed\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/student/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/student/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply For Company",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/student/apply-company/63f201f6d7296a24d8811361/63f4cf7d3741161d9518ff4e",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"apply-company",
+								"63f201f6d7296a24d8811361",
+								"63f4cf7d3741161d9518ff4e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Application for Job",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/student/delete-job/63f1debea65fb36a30f0b931/63f1df4aa65fb36a30f0b934",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"delete-job",
+								"63f1debea65fb36a30f0b931",
+								"63f1df4aa65fb36a30f0b934"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/student/63f201a5d7296a24d8811360",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"63f201a5d7296a24d8811360"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all placed students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/student/placed",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"placed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"prasadkhalkar@gmail.com\",\r\n    \"password\": \"Nashik@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/student/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Applied Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/student/applied-students/63f50419c9b8d94b21a89f9a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								"applied-students",
+								"63f50419c9b8d94b21a89f9a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Add Company",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Avaya\",\r\n    \"email\": \"avaya.com\",\r\n    \"url\": \"avaya.com\",\r\n    \"address\": \"Address to be added here\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/company/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"company",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/company/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "Add Job",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"SDE\",\r\n    \"ctc\": \"15\",\r\n    \"registration_end_date_time\": \"07-09-2023\",\r\n    \"ssc\": \"95.2\",\r\n    \"hsc\": \"80\",\r\n    \"cgpa\": \"9\",\r\n    \"skills\": \"Java\",\r\n    \"ugBranch\": [\"INFORMATION_TECHNOLOGY\",\"EnTC\"],\r\n    \"pgBranch\": [\"COMPUTER_ENGINEERING\",\"EnTC\"],\r\n    \"gender\": \"BOTH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/v1/company/add-job/63f1b01d1b6bc87c18fbb79b",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"company",
+								"add-job",
+								"63f1b01d1b6bc87c18fbb79b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/job/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"job",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job For Company",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/job/63f22b69ea9634492b73940d",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"job",
+								"63f22b69ea9634492b73940d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete job",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/v1/job/63f1b0331b6bc87c18fbb79c",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"job",
+								"63f1b0331b6bc87c18fbb79c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Get Basic Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/dashboard/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"passwor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/admin/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ML",
+			"item": [
+				{
+					"name": "Logistic Regression",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"gender\":0,\r\n    \"ssc\":93.4,\r\n    \"hsc\":80,\r\n    \"quantitative_ability\":85,\r\n    \"logical_reasoning\":90,\r\n    \"english_proficiency\":87,\r\n    \"automata_score\":98,\r\n    \"computer_science_score\":96,\r\n    \"internships\":3,\r\n    \"backlogs\":0,\r\n    \"projects\":4,\r\n    \"cgpa\":9.6,\r\n    \"CS\":0,\r\n    \"EnTC\":0,\r\n    \"IT\":1\r\n},{\r\n    \"gender\":0,\r\n    \"ssc\":93.4,\r\n    \"hsc\":80,\r\n    \"quantitative_ability\":85,\r\n    \"logical_reasoning\":90,\r\n    \"english_proficiency\":87,\r\n    \"automata_score\":98,\r\n    \"computer_science_score\":96,\r\n    \"internships\":3,\r\n    \"backlogs\":0,\r\n    \"projects\":4,\r\n    \"cgpa\":9.6,\r\n    \"CS\":0,\r\n    \"EnTC\":0,\r\n    \"IT\":1\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/predict",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"predict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Random Forest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"gender\":0,\r\n    \"ssc\":93.4,\r\n    \"hsc\":80,\r\n    \"quantitative_ability\":85,\r\n    \"logical_reasoning\":90,\r\n    \"english_proficiency\":87,\r\n    \"automata_score\":98,\r\n    \"computer_science_score\":96,\r\n    \"internships\":3,\r\n    \"backlogs\":0,\r\n    \"projects\":4,\r\n    \"cgpa\":9.6,\r\n    \"CS\":0,\r\n    \"EnTC\":0,\r\n    \"IT\":1\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/predict/rf",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"predict",
+								"rf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Naive Bayes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"gender\":0,\r\n    \"ssc\":93.4,\r\n    \"hsc\":80,\r\n    \"quantitative_ability\":85,\r\n    \"logical_reasoning\":90,\r\n    \"english_proficiency\":87,\r\n    \"automata_score\":98,\r\n    \"computer_science_score\":96,\r\n    \"internships\":3,\r\n    \"backlogs\":0,\r\n    \"projects\":4,\r\n    \"cgpa\":9.6,\r\n    \"CS\":0,\r\n    \"EnTC\":0,\r\n    \"IT\":1\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/predict/nb",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"predict",
+								"nb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Random Forest Imp Features",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/impfeaturesRF",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"impfeaturesRF"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

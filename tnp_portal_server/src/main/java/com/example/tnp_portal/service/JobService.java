@@ -44,8 +44,8 @@ public class JobService implements IJobService{
             if(company.isEmpty()){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            Optional<Job> job = repository.getJobForCompany(company_id);
-            return new ResponseEntity<>(job,HttpStatus.OK);
+            Optional<List<Job>> jobs = repository.getJobForCompany(company_id);
+            return new ResponseEntity<>(jobs.get(),HttpStatus.OK);
         }catch (Exception e){
             System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

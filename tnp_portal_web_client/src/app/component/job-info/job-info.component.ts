@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, Output, ViewChild, ElementRef } from '@angular/core';
+import { Store } from '@ngrx/store';
 import {jsPDF} from 'jspdf';
 import { Job } from 'src/app/model/job.model';
 import { Student } from 'src/app/model/student.model';
 import { HttpServiceService } from 'src/app/service/http-service.service';
+import { AppliedStudentAction } from 'src/app/store/actions/applied-students.action';
 import { environment } from 'src/environments/environment';
 import * as XLSX from 'xlsx';
 
@@ -21,16 +23,19 @@ export class JobInfoComponent {
 
   students: Student[];
 
-  constructor(private service: HttpServiceService){
+  constructor(private service: HttpServiceService, private store: Store<any>){
     this.students = [];
-    
+    this.store.select("appliedStudents").subscribe((data)=>{
+      this.students = data;
+    }) 
   }
 
   viewAppliedStudents(): void{
+    this.students = [];
     this.service.getRequest(environment.apiBaseUrl+"/student/applied-students/"+this.job.id)
     .subscribe((response)=>{
       if(response.status == 200){
-        this.students = response.body;
+        this.store.dispatch(new AppliedStudentAction(response.body));
       }
     });
   }

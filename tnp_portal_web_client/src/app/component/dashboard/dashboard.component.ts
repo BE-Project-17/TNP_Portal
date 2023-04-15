@@ -24,9 +24,7 @@ export class DashboardComponent {
     this.dashboardInfo = new DashboardInfo();
   
     this.store.select("dashboardInfo").subscribe((data)=>{
-      this.dashboardInfo = data;
-      console.log(this.dashboardInfo);
-      
+      this.dashboardInfo = data;      
     });
 
     this.fetchBasicInfo();

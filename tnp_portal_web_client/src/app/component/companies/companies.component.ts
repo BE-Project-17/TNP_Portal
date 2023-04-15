@@ -43,7 +43,7 @@ export class CompaniesComponent {
     // TODO: delete company api call
   }
 
-  viewCompany(company: Company): void{
+  viewCompany(company: Company): void{    
     this.router.navigate(['/company-info',JSON.stringify(company)]);
   }
 }

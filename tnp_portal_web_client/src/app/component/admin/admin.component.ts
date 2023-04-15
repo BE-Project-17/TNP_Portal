@@ -41,7 +41,6 @@ export class AdminComponent {
   login(): void{
     this.service.postRequest(environment.apiBaseUrl+"/admin/login",{"username":this.username,"password":this.password})
     .subscribe((response)=>{
-      console.log(response.status);
       
       if(response.status == 200){
         this.store.dispatch(new LoginAction(true));

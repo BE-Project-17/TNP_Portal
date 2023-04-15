@@ -98,7 +98,11 @@
             </div>
             <div class="modal-body">
 
-                <div id="appliedStudentContent" #appliedStudentContent>
+                <div id="no_content" *ngIf="!students.length">
+                    <h6>No students have applied yet</h6>
+                </div>
+
+                <div id="appliedStudentContent" #appliedStudentContent *ngIf="students.length">
                     <table class="table">
                         <thead class="thead-dark">
                           <tr>
@@ -127,7 +131,7 @@
                       </table>
                 </div>
                 
-                  <div class="row">
+                  <div class="row" *ngIf="students.length">
                     <div class="col">
                         <button class="btn btn-dark" (click)="savePDF()">Download PDF</button>
                     </div>

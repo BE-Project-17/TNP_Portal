@@ -25,6 +25,7 @@ import { AddJobComponent } from './component/add-job/add-job.component';
 import { dashboardInfoReducer } from './store/reducers/dashboard-info.reducer';
 import { AdminComponent } from './component/admin/admin.component';
 import { loginReducer } from './store/reducers/login.reducer';
+import { appliedStudentReducer } from './store/reducers/applied-students.reducer';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { loginReducer } from './store/reducers/login.reducer';
       "company": companyReducer,
       "job": jobReducer,
       "dashboardInfo": dashboardInfoReducer,
-      "login": loginReducer
+      "login": loginReducer,
+      "appliedStudents": appliedStudentReducer
     }),
     NoopAnimationsModule,
   ],

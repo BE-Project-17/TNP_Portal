@@ -38,11 +38,9 @@ export class CompanyInfoComponent {
     this.store.select("job")
     .subscribe((data)=>{
       this.jobList = data;
-      console.log(this.jobList);
-      
     });
 
-    this.fetchJobsList();
+    this.fetchJobsList(this.company.id);
 
   }
 
@@ -54,13 +52,13 @@ export class CompanyInfoComponent {
     .subscribe((response)=>{
       if(response.status == 200){
         this.store.dispatch(new LoadingAction(false));
-        this.fetchJobsList();
+        this.fetchJobsList(this.company.id);
       }
     });    
     
   }
-  fetchJobsList(): void{
-    this.service.getRequest(environment.apiBaseUrl+"/job").subscribe((response)=>{
+  fetchJobsList(company_id: string): void{
+    this.service.getRequest(environment.apiBaseUrl+"/job/"+company_id).subscribe((response)=>{
       if(response.status == 200){
         this.store.dispatch(new JobAction(response.body));
       }
@@ -72,7 +70,7 @@ export class CompanyInfoComponent {
     this.service.deleteRequest(environment.apiBaseUrl+"/job/"+id).subscribe((response)=>{
       if(response.status == 200){
         this.store.dispatch(new LoadingAction(false));
-        this.fetchJobsList();
+        this.fetchJobsList(this.company.id);
       }
     })
   }

@@ -22,7 +22,9 @@
     <h5>Jobs Offered: </h5>
     <br>
 
-    <table class="table">
+    <h6  *ngIf="!jobList.length">No Jobs created yet.</h6>
+
+    <table class="table" *ngIf="jobList.length">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Sr No.</th>
@@ -35,7 +37,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let job of jobList; let indexOfElement=index" app-job-info [job]="job" [index]="indexOfElement" (deleteJobReqSend)="onDeleteJobReq($event)"></tr>
+        <tr *ngFor="let job of jobList; let indexOfElement=index" app-job-info [job]="job" [index]="indexOfElement" (deleteJobReqSend)="onDeleteJobReq($event)">
+          
+        </tr>
       </tbody>
     </table>
     

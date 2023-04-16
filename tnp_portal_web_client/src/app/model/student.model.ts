@@ -20,4 +20,5 @@ export class Student{
     projects: number
     placed: boolean
     appliedJobs: Job[]
+    placedCompany: Job
 }

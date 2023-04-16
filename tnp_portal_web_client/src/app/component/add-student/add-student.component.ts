@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoadingAction } from 'src/app/store/actions/loading.action';
 import { environment } from 'src/environments/environment';
+import { JobAction } from 'src/app/store/actions/job.action';
+import { Job } from 'src/app/model/job.model';
 
 @Component({
   selector: 'app-add-student',
@@ -18,18 +20,38 @@ export class AddStudentComponent {
   student:Student;
   isLoading:boolean = false;
 
+  jobs: Job[] = [];
+
+  jobIndex: number = -1;
+
+
   constructor(private service: HttpServiceService, private router: Router, private store: Store<any>){
     this.student = new Student();
     this.student.placed = false;
-
+    this.jobs = [];
+    this.fetchJobsList();
     this.store.select("loader").subscribe((data)=>{
       this.isLoading = data;
     });
     
   }
 
+  fetchJobsList(): void{
+    this.jobs = [];
+    this.service.getRequest(environment.apiBaseUrl+"/job").subscribe((response)=>{
+      if(response.status == 200){
+        this.jobs = response.body;
+      }
+    })
+  }
+
   addStudent(): void{
     if(this.validate()){
+      console.log(this.student.password);
+      
+      if(this.student.placed){
+        this.student.placedCompany = this.jobs.at(this.jobIndex) as Job;
+      }
       this.store.dispatch(new LoadingAction(true));
       this.service.postRequest(environment.apiBaseUrl+this.endpoint+"/add",this.student).subscribe(
         (response)=>{
@@ -74,9 +96,14 @@ export class AddStudentComponent {
     if(this.student.quantitative_score > 100 ||  this.student.logical_reasoning_score > 100 ||
       this.student.english_prof_score > 100 ||  this.student.automata_pro_score > 100  || 
       this.student.computer_science_score > 100){
-        alert("Enter valid data for AmCAT Details Field");
+      alert("Enter valid data for AmCAT Details Field");
       return false;
-      }
+    }
+
+    if(this.student.placed == true && this.jobIndex == -1){
+      alert("Select placed company for student");
+      return false;
+    }
 
     return true;
   }

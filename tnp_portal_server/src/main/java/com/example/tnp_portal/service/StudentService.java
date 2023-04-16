@@ -1,9 +1,11 @@
 package com.example.tnp_portal.service;
 
+import com.example.tnp_portal.entity.EmailDetails;
 import com.example.tnp_portal.entity.Job;
 import com.example.tnp_portal.entity.Student;
 import com.example.tnp_portal.repository.IJobRepository;
 import com.example.tnp_portal.repository.IStudentRepository;
+import com.example.tnp_portal.utils.Constants;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.random.RandomGenerator;
 
 @Service
 public class StudentService implements IStudentService {
@@ -21,6 +24,9 @@ public class StudentService implements IStudentService {
     @Autowired
     private IJobRepository jobRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     @Override
     public ResponseEntity<?> addStudent(Student student) {
         try{
@@ -28,8 +34,22 @@ public class StudentService implements IStudentService {
             if(student1.isPresent()){
                 return new ResponseEntity<>(HttpStatus.CONFLICT);
             }
+            String password = "";
+            System.out.println(student.getPassword());
+            if(Objects.equals(student.getPassword(),null) || Objects.equals(student.getPassword(),"")){
+                password = emailService.generatePassword();
+                student.setPassword(password);
+            }else{
+                password = student.getPassword();
+            }
+            String body = String.format(Constants.emailBodyTemplate,student.getName().split(" ")[0],student.getEmail(),password);
             repository.save(student);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+
+            EmailDetails emailDetails = new EmailDetails(student.getEmail(), Constants.emailSubject,body);
+            String message = emailService.sendEmail(emailDetails);
+            Map<String,String> map = new HashMap<>();
+            map.put("message",message);
+            return new ResponseEntity<>(map,HttpStatus.CREATED);
         }catch(Exception e){
             System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

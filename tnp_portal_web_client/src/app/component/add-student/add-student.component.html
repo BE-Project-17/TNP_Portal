@@ -118,6 +118,13 @@
         <input type="number" class="form-control" id="projects" placeholder="eg. 2" [(ngModel)]="student.projects"
           [ngModelOptions]="{standalone:true}">
       </div>
+      <div class="form-group col-md-6" *ngIf="student.placed">
+        <label for="branch">Company Placed in</label>
+        <select class="form-select" aria-label="Default select example" id="branch" [(ngModel)]="jobIndex"
+        [ngModelOptions]="{standalone:true}">
+          <option *ngFor="let job of jobs; let indexOfElement=index;" value="{{indexOfElement}}">{{job.role + "-" + job.company.name}}</option>
+        </select>
+      </div>
     </div>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="student.placed"

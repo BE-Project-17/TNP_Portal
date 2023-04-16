@@ -1,5 +1,6 @@
 import pandas as pd
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 import LogisticRegression
@@ -9,6 +10,7 @@ from RandomForestModel import data as RandomForest_Data
 
 # Create flask app
 flask_app = Flask(__name__)
+CORS(flask_app)
 LR_model = pickle.load(open("LogisticRegressionModel.pkl", "rb"))
 RF_Model = pickle.load(open("RandomForestModel.pkl", "rb"))
 NB_Model = pickle.load(open("NaiveBayes.pkl", "rb"))

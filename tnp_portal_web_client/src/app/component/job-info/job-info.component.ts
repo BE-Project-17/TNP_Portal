@@ -28,6 +28,7 @@ export class JobInfoComponent {
     this.store.select("appliedStudents").subscribe((data)=>{
       this.students = data;
     }) 
+    
   }
 
   viewAppliedStudents(): void{

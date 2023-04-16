@@ -19,7 +19,6 @@ public class Student implements Serializable {
 
     private String name;
     private String email;
-
     private Branch branch;
     private String password;
     private Long rollNo;
@@ -38,6 +37,9 @@ public class Student implements Serializable {
 
     @DBRef
     private List<Job> appliedJobs;
+
+    @DBRef
+    private Job placedCompany;
 
     public Student() {
     }
@@ -213,5 +215,13 @@ public class Student implements Serializable {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    public Job getPlacedCompany() {
+        return placedCompany;
+    }
+
+    public void setPlacedCompany(Job placedCompany) {
+        this.placedCompany = placedCompany;
     }
 }
